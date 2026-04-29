@@ -1,15 +1,38 @@
-*.iml
+# IntelliJ / Android Studio
+.idea/*
+!.idea/.gitignore
+!.idea/compiler.xml
+!.idea/gradle.xml
+!.idea/kotlinc.xml
+!.idea/misc.xml
+
+# Explicit ignores
+.idea/workspace.xml
+.idea/.name
+.idea/inspectionProfiles/
+.idea/runConfigurations.xml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/deploymentTargetSelector.xml
+.idea/other.xml
+
+# Gradle / build
 .gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
 /build
-/captures
+*/build/
+
+# Local config
+local.properties
+
+# Native build
 .externalNativeBuild
 .cxx
-local.properties
+
+# OS
+.DS_Store
+
+# Captures
+/captures
