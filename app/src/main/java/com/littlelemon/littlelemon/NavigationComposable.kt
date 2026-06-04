@@ -10,31 +10,27 @@ import androidx.navigation.compose.composable
 fun NavigationComposable(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    isUserRegistered: Boolean?
-    ) {
-    if (isUserRegistered == null){
-        return
-    }
-    val startDestination =
-        if (isUserRegistered) {
-            HomeDestination.route
-        } else {
-            OnboardingDestination.route
-
-        }
-
+    isUserRegistered: Boolean,
+    database: AppDatabase
+) {
     NavHost(
         navController = navController,
-        startDestination = startDestination)
-    {
-        composable(HomeDestination.route) {
-            Home(navController)
+        startDestination = if (isUserRegistered) "home" else "onboarding",
+        modifier = modifier
+    ) {
+        composable("home") {
+            HomeRoute(
+                navController = navController,
+                database = database
+            )
         }
-        composable(ProfileDestination.route) {
-            Profile(modifier, navController)
+
+        composable("profile") {
+            Profile(navController = navController)
         }
-        composable(OnboardingDestination.route) {
-            Onboarding(modifier, navController)
+
+        composable("onboarding") {
+            Onboarding(navController = navController)
         }
     }
 }

@@ -4,11 +4,13 @@ import android.content.Context
 import com.littlelemon.littlelemon.RegistrationResult
 import com.littlelemon.littlelemon.model.UserInfo
 import com.littlelemon.littlelemon.validateRegistrationFields
+import androidx.core.content.edit
 
-private const val PREFS_NAME = "LittleLemonPrefs"
+private const val PREFS_NAME = "LittleLemonPreferences"
 private const val FIRST_NAME_KEY = "firstName"
 private const val LAST_NAME_KEY = "lastName"
 private const val EMAIL_KEY = "email"
+private const val USER_REGISTERED = "userRegistered"
 
 
 fun handleRegistration(
@@ -36,18 +38,21 @@ fun saveUser(
     userInfo: UserInfo,
 ) {
     context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        .edit()
-        .putString(FIRST_NAME_KEY, userInfo.firstName)
-        .putString(LAST_NAME_KEY, userInfo.lastName)
-        .putString(EMAIL_KEY, userInfo.email)
-        .apply()
+        .edit() {
+            putString(FIRST_NAME_KEY, userInfo.firstName)
+                .putString(LAST_NAME_KEY, userInfo.lastName)
+                .putString(EMAIL_KEY, userInfo.email)
+                .putBoolean(USER_REGISTERED, true)
+                .apply()
+        }
 }
 
 fun clearUser(context: Context) {
     context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        .edit()
-        .clear()
-        .apply()
+        .edit() {
+            clear()
+                .apply()
+        }
 }
 
 fun getUser(context: Context): UserInfo {
