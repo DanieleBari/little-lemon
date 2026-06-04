@@ -12,14 +12,11 @@ import androidx.compose.ui.unit.dp
 import com.littlelemon.littlelemon.R
 
 @Composable
-fun Logo(){
-    Image(painter = painterResource(
-        id = R.drawable.logo),
+fun Logo(modifier: Modifier = Modifier) {
+    Image(
+        painter = painterResource(id = R.drawable.logo),
         contentDescription = "Logo Image",
-        modifier = Modifier
-            .padding(top = 32.dp, bottom = 24.dp)
-            .fillMaxWidth(0.75f)
-            .height(90.dp),
-        contentScale = ContentScale.FillWidth
+        modifier = modifier,
+        contentScale = ContentScale.Fit
     )
 }

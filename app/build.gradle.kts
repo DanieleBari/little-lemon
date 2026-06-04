@@ -5,6 +5,13 @@ plugins {
     kotlin("kapt")
 }
 
+configurations.all {
+    resolutionStrategy.force(
+        "org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3",
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
+    )
+}
+
 android {
     namespace = "com.littlelemon.littlelemon"
     compileSdk = 36
@@ -72,4 +79,13 @@ dependencies {
     implementation(libs.ktor.client.android)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.json)
+    implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
+    implementation("androidx.compose.runtime:runtime-livedata")
 }
