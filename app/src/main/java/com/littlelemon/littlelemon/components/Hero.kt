@@ -1,0 +1,103 @@
+package com.littlelemon.littlelemon.components
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.littlelemon.littlelemon.R
+import com.littlelemon.littlelemon.ui.theme.LLCloud
+import com.littlelemon.littlelemon.ui.theme.LLDark
+import com.littlelemon.littlelemon.ui.theme.LLGreen
+import com.littlelemon.littlelemon.ui.theme.LLYellow
+
+@Composable
+fun Hero(
+    searchPhrase: String = "",
+    onSearchPhraseChange: (String) -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = LLGreen)
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Little Lemon",
+            color = LLYellow,
+            style = MaterialTheme.typography.headlineLarge
+        )
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 16.dp)
+            ) {
+                Text(
+                    text = "Chicago",
+                    color = LLCloud,
+                    style = MaterialTheme.typography.headlineMedium
+                )
+
+                Text(
+                    text = "We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist",
+                    color = LLCloud,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+
+            Image(
+                painter = painterResource(id = R.drawable.hero_image),
+                contentDescription = "Logo Image",
+                modifier = Modifier
+                    .size(100.dp),
+                contentScale = ContentScale.Fit
+            )
+        }
+        TextField(
+            value = searchPhrase,
+            onValueChange = onSearchPhraseChange,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search"
+                )
+            },
+            placeholder = {
+                Text("Enter search phrase")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+            singleLine = true
+        )
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun HeroPreview(){
+    Hero(
+        "sample string",
+        {})
+}
