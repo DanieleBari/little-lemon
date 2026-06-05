@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.littlelemon.littlelemon.R
 import com.littlelemon.littlelemon.ui.theme.LLCloud
 import com.littlelemon.littlelemon.ui.theme.LLDark
+import com.littlelemon.littlelemon.ui.theme.LLGreen
 import com.littlelemon.littlelemon.ui.theme.LLYellow
 
 @Composable
@@ -33,13 +34,13 @@ fun Hero(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = LLDark)
+            .background(color = LLGreen)
             .padding(16.dp)
     ) {
         Text(
             text = "Little Lemon",
             color = LLYellow,
-            style = MaterialTheme.typography.headlineMedium
+            style = MaterialTheme.typography.headlineLarge
         )
 
         Row(
@@ -54,13 +55,13 @@ fun Hero(
                 Text(
                     text = "Chicago",
                     color = LLCloud,
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.headlineMedium
                 )
 
                 Text(
                     text = "We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist",
                     color = LLCloud,
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
 

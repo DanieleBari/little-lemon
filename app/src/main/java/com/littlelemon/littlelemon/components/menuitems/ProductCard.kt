@@ -1,5 +1,6 @@
 package com.littlelemon.littlelemon.components.menuitems
 
+import android.R.color
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.littlelemon.littlelemon.components.menuitems.model.ProductItem
+import com.littlelemon.littlelemon.ui.theme.LLDark
+
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -35,6 +38,7 @@ fun ProductCard(
     ) {
         Text(
             text = productItem.title,
+            color = LLDark,
             style = MaterialTheme.typography.titleMedium
         )
 
@@ -52,6 +56,7 @@ fun ProductCard(
             ) {
                 Text(
                     text = productItem.description,
+                    color = LLDark,
                     style = MaterialTheme.typography.bodyMedium,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
@@ -63,6 +68,7 @@ fun ProductCard(
 
                 Text(
                     text = formatPrice(productItem.price),
+                    color = LLDark,
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

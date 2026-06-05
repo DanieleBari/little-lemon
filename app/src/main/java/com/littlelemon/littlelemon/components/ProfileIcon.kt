@@ -3,8 +3,10 @@ package com.littlelemon.littlelemon.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +23,8 @@ fun ProfileIcon(
         contentDescription = "Profile",
         modifier = modifier
             .size(48.dp)
-            .clickable { onClick() },
+            .clickable { onClick() }
+            .clip(CircleShape),
         contentScale = ContentScale.Crop
     )
 }

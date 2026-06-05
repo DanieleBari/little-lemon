@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,6 +20,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.littlelemon.littlelemon.components.menuitems.ProductCard
 import com.littlelemon.littlelemon.components.menuitems.model.ProductItem
+import com.littlelemon.littlelemon.ui.theme.LLCloud
+import com.littlelemon.littlelemon.ui.theme.LLDark
+import com.littlelemon.littlelemon.ui.theme.LLYellow
 
 @Composable
 fun MenuItems(
@@ -33,7 +37,8 @@ fun MenuItems(
     ) {
         Text(
             text = "ORDER FOR DELIVERY!",
-            style = MaterialTheme.typography.headlineSmall,
+            color = LLDark,
+            style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(
                 start = 16.dp,
                 end = 16.dp,
@@ -56,13 +61,23 @@ fun MenuItems(
                     label = {
                         Text(
                             text = category.replaceFirstChar { it.uppercase() },
+                            color = LLDark,
+                            style = MaterialTheme.typography.labelLarge,
                             fontWeight = if (selectedCategory == category) {
                                 FontWeight.Bold
                             } else {
                                 FontWeight.Normal
                             }
                         )
-                    }
+                    },
+                    colors = AssistChipDefaults.assistChipColors(
+                        containerColor = if (selectedCategory == category) {
+                            LLYellow
+                        } else {
+                            LLCloud
+                        },
+                        labelColor = LLDark
+                    )
                 )
             }
         }
